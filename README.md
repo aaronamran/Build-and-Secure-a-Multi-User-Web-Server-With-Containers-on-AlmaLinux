@@ -22,7 +22,23 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 
 ## AlmaLinux VM Setup and Essential Tools
+- Update and install packages
+  ```
+  sudo dnf update -y
+  sudo dnf install -y vim tar bzip2 gzip net-tools podman skopeo wget firewalld man-pages
+  ```
 
+- Use the essential CLI tools
+  ```
+  touch testfile
+  echo "Hello World" > testfile
+  grep Hello testfile
+  cat /etc/passwd | grep root
+  ```
+
+- Use man, info, /usr/share/doc, etc.
+
+  
 
 ## Create and Use Users, Groups and Permissions
 
