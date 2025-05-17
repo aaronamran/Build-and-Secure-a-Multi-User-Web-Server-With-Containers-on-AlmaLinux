@@ -53,6 +53,25 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ![image](https://github.com/user-attachments/assets/08863ccc-c161-4e9b-a4ef-b3b23eae871e) <br />
   ![image](https://github.com/user-attachments/assets/839c781c-504d-4363-9eed-5980ac5bcf37) <br />
 
+  Reboot the system once installation is completed <br />
+  ![image](https://github.com/user-attachments/assets/651eebe1-4a06-4939-b5d1-3c5bc800dac0) <br />
+
+- After reboot, start the setup <br />
+  ![image](https://github.com/user-attachments/assets/e8e975ba-602f-4f71-84ba-8f53ee16e036) <br />
+
+- Again, a simple name is used <br />
+  ![image](https://github.com/user-attachments/assets/7f60dcf0-0c99-40b3-839f-f516c3cbab3e) <br />
+
+- Use a simple password such as `sysadmin` for the created account, then the setup should be complete <br />
+  ![image](https://github.com/user-attachments/assets/6a9de116-c292-46ce-a158-8df2cc3b3f1b) <br />
+  ![image](https://github.com/user-attachments/assets/c77f69f7-254b-4ddc-956e-f6c040bfecc0) <br />
+
+- 
+
+
+
+
+
 
   
 
