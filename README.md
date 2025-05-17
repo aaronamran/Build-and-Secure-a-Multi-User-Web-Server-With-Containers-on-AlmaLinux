@@ -22,10 +22,26 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 
 ## AlmaLinux VM Setup and Essential Tools
-- Visit [https://almalinux.org/get-almalinux/](https://almalinux.org/get-almalinux/) and download AlmaLinux OS 9.5 DVD ISO image <br />
+- Visit [https://almalinux.org/get-almalinux/](https://almalinux.org/get-almalinux/) and download the AlmaLinux OS 9.5 DVD ISO image <br />
   ![image](https://github.com/user-attachments/assets/3e1c279c-7dad-44f9-982b-d85abb435782) <br />
 
+- In VirtualBox, create a new VM and add the downloaded ISO image <br />
+  ![image](https://github.com/user-attachments/assets/a5325f0b-bd40-4ae8-9d53-fe9d7714f1ea) <br />
+
+- Continue with the Unattended Guest OS Setup <br />
+  ![image](https://github.com/user-attachments/assets/34346198-a499-4891-acaa-acdeb439959e) <br />
+
+- Choose 4GB for the RAM and 2 cores for the number of processors <br />
+  ![image](https://github.com/user-attachments/assets/d2f6637e-ffe6-49eb-b53a-d6cd4474cd2d) <br />
+
+- 20GB of storage should be sufficient for this project <br />
+  ![image](https://github.com/user-attachments/assets/5bb81429-2d86-433a-a609-ca7e7d76f80f) <br />
+
 - 
+
+
+
+
 
 - Update and install packages
   ```
