@@ -35,9 +35,30 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ![image](https://github.com/user-attachments/assets/452ade6b-f815-4497-aba4-b3f00a5868b9) <br />
 
 - Finish the AlmaLinux VM setup <br />
-  ![image](https://github.com/user-attachments/assets/b49778a3-90e8-4346-9708-b154c7748be3)  <br />
+  ![image](https://github.com/user-attachments/assets/b49778a3-90e8-4346-9708-b154c7748be3) <br />
 
-- 
+- Power on AlmaLinux and begin the setup <br />
+  ![image](https://github.com/user-attachments/assets/317a2c81-2e02-4069-9e2c-8146d4802786) <br />
+
+  Choose the preferred language <br />
+  ![image](https://github.com/user-attachments/assets/50f674d1-8769-4def-8954-1df48cee651b) <br />
+
+  Complete the marked items to continue with the installation <br />
+  ![image](https://github.com/user-attachments/assets/873a595a-8ed3-4bca-928e-a6d2e9310da7) <br />
+
+  A simple root password such as `sysadmin` for this project would suffice <br />
+  ![image](https://github.com/user-attachments/assets/087a7dcb-6f83-40a5-a9c9-eb1c4784aee9) <br />
+
+  For the Installation Destination, select the disk to install the OS to. When returning to the Installation Summary, click Begin Installation <br />
+  ![image](https://github.com/user-attachments/assets/08863ccc-c161-4e9b-a4ef-b3b23eae871e) <br />
+
+  
+
+  
+
+
+
+
 
 
 
