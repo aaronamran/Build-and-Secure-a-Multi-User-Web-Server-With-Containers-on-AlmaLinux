@@ -22,6 +22,11 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 
 ## AlmaLinux VM Setup and Essential Tools
+- Visit [https://almalinux.org/get-almalinux/](https://almalinux.org/get-almalinux/) and download AlmaLinux OS 9.5 DVD ISO image <br />
+  ![image](https://github.com/user-attachments/assets/3e1c279c-7dad-44f9-982b-d85abb435782) <br />
+
+- 
+
 - Update and install packages
   ```
   sudo dnf update -y
