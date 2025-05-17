@@ -51,6 +51,8 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
   For the Installation Destination, select the disk to install the OS to. When returning to the Installation Summary, click Begin Installation <br />
   ![image](https://github.com/user-attachments/assets/08863ccc-c161-4e9b-a4ef-b3b23eae871e) <br />
+  ![image](https://github.com/user-attachments/assets/839c781c-504d-4363-9eed-5980ac5bcf37) <br />
+
 
   
 
