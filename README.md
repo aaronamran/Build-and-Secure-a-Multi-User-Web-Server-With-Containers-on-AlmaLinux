@@ -120,27 +120,209 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 ## Local Storage and File System Management
 
-- 
+- Create a new disk in VM settings
+
+- Partition the disk
+  ```
+  sudo fdisk /dev/sdb
+  ```
+  Create a primary partition and write
+
+- Create the LVM (Logical Volume Manager)
+  ```
+  sudo pvcreate /dev/sdb1
+  sudo vgcreate devvg /dev/sdb1
+  sudo lvcreate -n devlv -L 2G devvg
+  sudo mkfs.xfs /dev/devvg/devlv
+  ```
+
+- Mount at boot using UUID
+  ```
+  sudo mkdir /mnt/dev
+  sudo blkid /dev/devvg/devlv  # Copy UUID
+  echo 'UUID=<UUID> /mnt/dev xfs defaults 0 0' | sudo tee -a /etc/fstab
+  sudo mount -a
+  ```
+
+- Add a swap of 1GB
+  ```
+  sudo lvcreate -L 1G -n swap devvg
+  sudo mkswap /dev/devvg/swap
+  echo '/dev/devvg/swap swap swap defaults 0 0' | sudo tee -a /etc/fstab
+  sudo swapon -a
+  ```
+
+  
+
+
+
 
 
 
 ## Network Configuration
 
-- 
+- Set static IP and hostname
+  ```
+  nmcli con show
+  nmcli con mod <conn_name> ipv4.method manual ipv4.addresses "192.168.1.100/24" ipv4.gateway "192.168.1.1" ipv4.dns "8.8.8.8"
+  nmcli con up <conn_name>
+  hostnamectl set-hostname rhcsa-lab
+  ```
+  
+
 
 
 
 ## Secure Access, SSH and Firewall
 
+- Enable and configure SSH
+  ```
+  sudo systemctl enable --now sshd
+  ```
+
+- Set up SSH key-based authentication
+  ```
+  ssh-keygen
+  ssh-copy-id dev1@192.168.1.100
+  ```
+
+- Configure the firewall
+  ```
+  sudo systemctl enable --now firewalld
+  sudo firewall-cmd --permanent --add-service=ssh
+  sudo firewall-cmd --reload
+  ```
+
+
+
+
 ## System Services, Targets and Scheduling
 
+- Change the default target
+  ```
+  sudo systemctl set-default multi-user.target
+  ```
+
+- Reboot to test
+- Create a cron job and at job
+  ```
+  echo "echo 'Hello from cron' >> /tmp/cron.log" | sudo tee /etc/cron.hourly/testjob
+  echo "echo 'One time task' >> /tmp/atjob.log" | at now + 1 minute
+  ```
+
+
+
+
 ## Logs, Performance and Journals
+- To view logs, use
+  ```
+  journalctl -xe
+  sudo dmesg
+  ```
+
+- Find and kill high CPU processes
+  ```
+  top
+  kill -9 <PID>
+  ```
+
+- Set the tuning profile
+  ```
+  sudo dnf install -y tuned
+  sudo tuned-adm list
+  sudo tuned-adm profile balanced
+  ```
+
+
+
+
+
 
 ## Shell Scripting Practice
+- Create a sample script
+  ```
+  #!/bin/bash
+  if [ "$1" == "start" ]; then
+      echo "Starting Service"
+  elif [ "$1" == "stop" ]; then
+      echo "Stopping Service"
+  else
+      echo "Usage: $0 start|stop"
+  fi
+  ```
+
+- Example of a loop script
+  ```
+  #!/bin/bash
+  for user in dev1 dev2; do
+    echo "Checking files for $user"
+    ls /home/$user
+  done
+  ```
+
+
+
+
+
 
 ## Containers with Podman
+- Install and run the container
+  ```
+  sudo dnf install -y podman
+  podman pull httpd
+  podman run -d --name web1 -p 8080:80 httpd
+  ```
+
+- Auto-start the container as systemd service
+  ```
+  podman generate systemd --name web1 --files --restart-policy=always
+  sudo mv container-web1.service /etc/systemd/system/
+  sudo systemctl daemon-reexec
+  sudo systemctl enable --now container-web1.service
+  ```
+
+- Attach the storage
+  ```
+  sudo mkdir /webdata
+  sudo podman volume create --opt type=none --opt device=/webdata --opt o=bind webvolume
+  podman run -d --name web2 -p 8081:80 -v webvolume:/usr/local/apache2/htdocs httpd
+  ```
+    
+
+
 
 ## SELinux Practice and Testing with Reboot
+- List and fix the contexts
+  ```
+  ls -Z /var/www/html
+  sudo restorecon -Rv /var/www/html
+  ```
+
+- Set the SELinux booleans
+  ```
+  sudo setsebool -P httpd_can_network_connect on
+  ```
+
+- Modify the port labels
+  ```
+  sudo semanage port -a -t http_port_t -p tcp 8081
+  ```
+
+- View SELinux audit logs
+  ```
+  sudo ausearch -m avc -ts recent
+  ```
+
+- As a final validation, reboot and check the following:
+  - SSH works with keys
+  - Container starts via systemd
+  - `/mnt/dev` auto-mounted
+  - Users and shared folders remain
+  - cron/at ran
+  - Scripts work
+  - SELinux and firewall rules applied
+
+
 
 
 
