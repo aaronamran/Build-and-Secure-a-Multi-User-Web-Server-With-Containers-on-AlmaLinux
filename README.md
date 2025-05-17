@@ -72,7 +72,7 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   sudo dnf install -y vim tar bzip2 gzip net-tools podman skopeo wget firewalld man-pages
   ```
   ![image](https://github.com/user-attachments/assets/ae9ca394-6b3e-4a8a-8ea5-7ad93ba25c9d) <br />
-  
+  ![image](https://github.com/user-attachments/assets/8e68cb7b-1dad-4efc-a396-229c6894f450) <br />
 
 
 - Use the essential CLI tools
