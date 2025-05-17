@@ -66,34 +66,14 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ![image](https://github.com/user-attachments/assets/6a9de116-c292-46ce-a158-8df2cc3b3f1b) <br />
   ![image](https://github.com/user-attachments/assets/c77f69f7-254b-4ddc-956e-f6c040bfecc0) <br />
 
-- 
-
-
-
-
-
-
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 - Update and install packages
   ```
   sudo dnf update -y
   sudo dnf install -y vim tar bzip2 gzip net-tools podman skopeo wget firewalld man-pages
   ```
+  ![image](https://github.com/user-attachments/assets/ae9ca394-6b3e-4a8a-8ea5-7ad93ba25c9d) <br />
+  
+
 
 - Use the essential CLI tools
   ```
