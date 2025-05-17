@@ -26,18 +26,22 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ![image](https://github.com/user-attachments/assets/3e1c279c-7dad-44f9-982b-d85abb435782) <br />
 
 - In VirtualBox, create a new VM and add the downloaded ISO image <br />
-  ![image](https://github.com/user-attachments/assets/a5325f0b-bd40-4ae8-9d53-fe9d7714f1ea) <br />
+  ![image](https://github.com/user-attachments/assets/036b1818-2927-4c57-aeb1-352582034c5a) <br />
 
-- Continue with the Unattended Guest OS Setup <br />
-  ![image](https://github.com/user-attachments/assets/34346198-a499-4891-acaa-acdeb439959e) <br />
+- Allocate 4GB of RAM and 2 CPUs <br />
+  ![image](https://github.com/user-attachments/assets/c8aae1e1-5aaa-4e11-a0f0-02533d97542d) <br />
 
-- Choose 4GB for the RAM and 2 cores for the number of processors <br />
-  ![image](https://github.com/user-attachments/assets/d2f6637e-ffe6-49eb-b53a-d6cd4474cd2d) <br />
+- The default storage size of 20GB should be enough <br />
+  ![image](https://github.com/user-attachments/assets/452ade6b-f815-4497-aba4-b3f00a5868b9) <br />
 
-- 20GB of storage should be sufficient for this project <br />
-  ![image](https://github.com/user-attachments/assets/5bb81429-2d86-433a-a609-ca7e7d76f80f) <br />
+- Finish the AlmaLinux VM setup <br />
+  ![image](https://github.com/user-attachments/assets/b49778a3-90e8-4346-9708-b154c7748be3)  <br />
 
 - 
+
+
+
+
 
 
 
