@@ -89,9 +89,46 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 ## Create and Use Users, Groups and Permissions
 
+- Create users and groups
+  ```
+  sudo useradd dev1
+  sudo useradd dev2
+  sudo groupadd developers
+  sudo usermod -aG developers dev1
+  sudo usermod -aG developers dev2
+  ```
+
+- Set passwords
+  ```
+  sudo passwd dev1
+  sudo passwd dev2
+  ```
+
+- Create a shared directory with Set-GID
+  ```
+  sudo mkdir /opt/devshare
+  sudo chown root:developers /opt/devshare
+  sudo chmod 2775 /opt/devshare
+  ```
+
+- Test the configured permissions
+  ```
+  sudo -u dev1 touch /opt/devshare/file1
+  sudo -u dev2 ls -l /opt/devshare
+  ```
+
+
 ## Local Storage and File System Management
 
+- 
+
+
+
 ## Network Configuration
+
+- 
+
+
 
 ## Secure Access, SSH and Firewall
 
