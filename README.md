@@ -499,6 +499,33 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ls -Z /var/www/html
   sudo restorecon -Rv /var/www/html
   ```
+  ![image](https://github.com/user-attachments/assets/2ee97c4f-5334-45f6-92e8-cbb2aeb3f7ec) <br />
+  If the error `No such file or directory` appears, AlmaLinux might not have Apache installed, or Apache might be configured to use a different document root or the directory was deleted or never created. Firstly check if Apache is installed
+  ```
+  which httpd
+  ```
+  ![image](https://github.com/user-attachments/assets/e5aaafb7-3cee-4baf-ac01-31fd348a0186) <br />
+
+  Then install Apache
+  ```
+  sudo dnf install httpd -y
+  ```
+  ![image](https://github.com/user-attachments/assets/c976c5a9-28fa-4d91-b54a-05e218409197) <br />
+
+  Run the command
+  ```
+  ls -Z /var/www/html
+  ```
+  If it is empty, it will not output anything. To confirm it exists, use
+  ```
+  ls -dZ /var/www/html
+  ```
+  ![image](https://github.com/user-attachments/assets/b4404f0c-9bb3-400d-b47e-8cba7f8dcd8c) <br />
+
+  
+
+  
+
 
 - Set the SELinux booleans
   ```
