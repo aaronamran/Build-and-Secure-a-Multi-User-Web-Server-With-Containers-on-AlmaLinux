@@ -541,12 +541,18 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 - As an optional final validation, reboot the AlmaLinux VM and check the following:
   - SSH works with keys
+    ![image](https://github.com/user-attachments/assets/af525eb8-f7eb-44aa-8b31-40b4fa67f38b) <br />
+
   - Container starts via systemd
   - `/mnt/dev` auto-mounted
+    ![image](https://github.com/user-attachments/assets/1ed8c54e-bef9-4691-b720-7de01b2b0d83) <br />
+
   - Users and shared folders remain
   - cron/at ran
   - Scripts work
   - SELinux and firewall rules applied
+    ![image](https://github.com/user-attachments/assets/dd93daac-d51c-4094-b001-e51dd57923b6)
+
 
 
 
