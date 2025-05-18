@@ -522,11 +522,6 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ```
   ![image](https://github.com/user-attachments/assets/b4404f0c-9bb3-400d-b47e-8cba7f8dcd8c) <br />
 
-  
-
-  
-
-
 - Set the SELinux booleans
   ```
   sudo setsebool -P httpd_can_network_connect on
@@ -536,13 +531,15 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ```
   sudo semanage port -a -t http_port_t -p tcp 8081
   ```
+  ![image](https://github.com/user-attachments/assets/6d845180-1db7-45e1-bd1d-ffd089b59734) <br />
 
 - View SELinux audit logs
   ```
   sudo ausearch -m avc -ts recent
   ```
+  ![image](https://github.com/user-attachments/assets/42382bf4-9718-492a-bbaa-0e5290add24e) <br />
 
-- As a final validation, reboot and check the following:
+- As an optional final validation, reboot the AlmaLinux VM and check the following:
   - SSH works with keys
   - Container starts via systemd
   - `/mnt/dev` auto-mounted
