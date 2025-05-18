@@ -197,8 +197,7 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   - Press `Enter` → Accept default first sector
   - Press `Enter` → Accept default last sector (uses entire disk)
   - Now the partition is created in memory
-  - Type `w` → Write changes to disk and exit
-  <br />
+  - Type `w` → Write changes to disk and exit <br />
   ![image](https://github.com/user-attachments/assets/16931239-88fe-4a3d-aa9b-17cca083af85) <br />
 
 - Create the LVM (Logical Volume Manager)
