@@ -229,16 +229,20 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 
 ## Network Configuration
-
-- Set static IP and hostname
+- To find the connection name, run
   ```
   nmcli con show
-  nmcli con mod <conn_name> ipv4.method manual ipv4.addresses "192.168.1.100/24" ipv4.gateway "192.168.1.1" ipv4.dns "8.8.8.8"
+  ```
+  ![image](https://github.com/user-attachments/assets/2ac3cb2a-18fb-4860-95e6-7522fd65d1de) <br />
+
+  
+- Set static IP and hostname. Replace the `<conn_name>` based on the previous output
+  ```
+  nmcli con mod <conn_name> ipv4.method manual ipv4.addresses "192.168.1.6/24" ipv4.gateway "192.168.1.1" ipv4.dns "8.8.8.8"
   nmcli con up <conn_name>
   hostnamectl set-hostname rhcsa-lab
   ```
-  
-
+  ![image](https://github.com/user-attachments/assets/c0765656-e334-46ac-b50c-6121b0e00df9) <br />
 
 
 
@@ -248,12 +252,26 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ```
   sudo systemctl enable --now sshd
   ```
+  ![image](https://github.com/user-attachments/assets/4f5a1b36-8929-4400-9907-13ec69785b26) <br />
 
-- Set up SSH key-based authentication
+- Generate a key pair on the source machine (AlmaLinux VM)
   ```
   ssh-keygen
-  ssh-copy-id dev1@192.168.1.100
   ```
+  When prompted where to save the key, press `Enter` to accept the default. Setting a passphrase is optional, pressing `Enter` makes no passphrase be chosen <br />
+  ![image](https://github.com/user-attachments/assets/f49d9d63-590a-426b-8435-c5fc2f176e48) <br />
+  
+- Copy the Public Key to the target machine. In this project setup, the target machine is a separate Lubuntu VM. Retrieve the username and IP address of the Lubuntu VM
+  ```
+  ssh-copy-id <lubuntu_username>@<lubuntu_IP_address>
+  ```
+  ![image](https://github.com/user-attachments/assets/df8a790e-b7ab-4db3-98ee-ff5ed95ec0ee) <br />
+
+- Test the SSH login from AlmaLinux VM to Lubuntu VM. A login should be successful without a password prompt
+  ```
+  ssh <lubuntu_username>@<lubuntu_IP_address>
+  ```
+  ![image](https://github.com/user-attachments/assets/179cd01e-1865-4f69-a5f7-dd64b67f1bd3) <br />
 
 - Configure the firewall
   ```
@@ -261,25 +279,66 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   sudo firewall-cmd --permanent --add-service=ssh
   sudo firewall-cmd --reload
   ```
-
-
+  ![image](https://github.com/user-attachments/assets/a908c4f3-457f-4f93-9354-98787129a433) <br />
 
 
 ## System Services, Targets and Scheduling
 
-- Change the default target
+- Change the default boot target for AlmaLinux VM system to `multi-user.target`. It is similar to runlevel 3 in older systems (text-only mode and no GUI)
   ```
   sudo systemctl set-default multi-user.target
   ```
+  ![image](https://github.com/user-attachments/assets/c8aee4f1-0b8e-4f42-a003-62d7852b259f) <br />
 
-- Reboot to test
-- Create a cron job and at job
+- Reboot to test <br />
+  ![image](https://github.com/user-attachments/assets/89f411f8-f4c6-4288-9d14-2513da54e911) <br />
+
+- Create a cron job (recurring) and at job (one-time)
   ```
   echo "echo 'Hello from cron' >> /tmp/cron.log" | sudo tee /etc/cron.hourly/testjob
   echo "echo 'One time task' >> /tmp/atjob.log" | at now + 1 minute
   ```
+  ![image](https://github.com/user-attachments/assets/e6b6468e-0bdc-4ce2-9264-f8263c86edc7) <br />
 
+  Make the script executable using
+  ```
+  sudo chmod +x /etc/cron.hourly/testjob
+  ```
+  ![image](https://github.com/user-attachments/assets/5a98636f-3123-4444-a253-65b836bb4bce) <br />
 
+  After an hour (or if it is manually tested with `run-parts`), the `Hello from cron` should be seen
+  ```
+  cat /tmp/cron.log
+  ```
+  For manual testing of the cron job, use
+  ```
+  sudo run-parts /etc/cron.hourly/
+  cat /tmp/cron.log
+  ```
+  ![image](https://github.com/user-attachments/assets/a08f5a79-a6c0-4cd4-83ea-d314a7d6e816) <br />
+
+  For the at job, wait 1-2 minutes then check
+  ```
+  cat /tmp/atjob.log
+  ```
+  It should output `One time task` <br />
+  ![image](https://github.com/user-attachments/assets/4e9dd772-df2e-490d-81a4-7b4f5d32e037) <br />
+
+  To confirm the the job is scheduled, use
+  ```
+  atq
+  ```
+  To view what was scheduled, use
+  ```
+  sudo ls -l /var/spool/at/
+  ```
+  ![image](https://github.com/user-attachments/assets/fa25fb99-b457-43de-9e9e-f5f42a587a7b) <br />
+
+  Clean up both cron job and at job after the testig is completed
+  ```
+  sudo rm /etc/cron.hourly/testjob
+  sudo rm /tmp/cron.log /tmp/atjob.log
+  ```
 
 
 ## Logs, Performance and Journals
