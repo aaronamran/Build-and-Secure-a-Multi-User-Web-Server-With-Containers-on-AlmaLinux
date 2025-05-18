@@ -135,12 +135,15 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   sudo usermod -aG developers dev1
   sudo usermod -aG developers dev2
   ```
+  ![image](https://github.com/user-attachments/assets/77d1477d-a656-4551-b438-2841429a37f7) <br />
 
 - Set passwords
   ```
   sudo passwd dev1
   sudo passwd dev2
   ```
+  ![image](https://github.com/user-attachments/assets/de98748a-bf2a-4554-8eea-7de724a4e515) <br />
+  Note that the recommended password for users are more than 8 characters <br />
 
 - Create a shared directory with Set-GID
   ```
@@ -148,18 +151,19 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   sudo chown root:developers /opt/devshare
   sudo chmod 2775 /opt/devshare
   ```
+  ![image](https://github.com/user-attachments/assets/90c46031-1f54-4384-a973-64c3ad51b383) <br />
 
 - Test the configured permissions
   ```
   sudo -u dev1 touch /opt/devshare/file1
   sudo -u dev2 ls -l /opt/devshare
   ```
-
+  ![image](https://github.com/user-attachments/assets/91bd926c-f44f-41fe-b186-9fad54ffc1ab) <br />
+  
 
 ## Local Storage and File System Management
 
 - Create a new disk in VM settings
-
 - Partition the disk
   ```
   sudo fdisk /dev/sdb
