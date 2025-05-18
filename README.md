@@ -455,13 +455,30 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   sudo systemctl status container-web1.service
   ```
   ![image](https://github.com/user-attachments/assets/b9ddbbd9-d69a-40f6-8e9e-757907ffb7b6) <br />
+  The output of the command `journalctl -xeu container-web1.service` states that permission is denied. Check for service file validity. Open the file to check the contents
+  ```
+  cat /etc/systemd/system/container-web1.service
+  ```
 
   ![image](https://github.com/user-attachments/assets/df651237-d423-4be3-80ba-769e4410c5c4) <br />
 
+  At the bottom of the file, add `WantedBy=multi-user.target`. Then save, exit and run <br />
   ![image](https://github.com/user-attachments/assets/1fdf9758-1472-4d19-9cfa-56fd25c15b6c) <br />
 
   ![image](https://github.com/user-attachments/assets/19b6dad9-cb43-4b69-aa91-a73cc4ae2aa5) <br />
-
+  If an error still appears, check the SELinux status using
+  ```
+  getenforce
+  ```
+  If it says `Enforcing`, try temporarily disabling SELinux to test
+  ```
+  sudo setenforce 0
+  ```
+  Then retry the commands
+  ```
+  sudo systemctl daemon-reload
+  sudo systemctl enable --now container-web1.service
+  ```
   ![image](https://github.com/user-attachments/assets/c5b60a23-0fab-4479-b17a-3311bf86c511) <br />
 
 
