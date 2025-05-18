@@ -442,14 +442,29 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   podman pull httpd
   podman run -d --name web1 -p 8080:80 httpd
   ```
+  In the command `podman pull httpd`, select the working repo. Based on the screenshot, the working repo is `docker.io/library/httpd` <br />
+  ![image](https://github.com/user-attachments/assets/de030198-3352-45e2-b717-8d2c1dff7f94) <br />
+
 
 - Auto-start the container as systemd service
   ```
   podman generate systemd --name web1 --files --restart-policy=always
   sudo mv container-web1.service /etc/systemd/system/
-  sudo systemctl daemon-reexec
+  sudo systemctl daemon-reload
   sudo systemctl enable --now container-web1.service
+  sudo systemctl status container-web1.service
   ```
+  ![image](https://github.com/user-attachments/assets/b9ddbbd9-d69a-40f6-8e9e-757907ffb7b6) <br />
+
+  ![image](https://github.com/user-attachments/assets/df651237-d423-4be3-80ba-769e4410c5c4) <br />
+
+  ![image](https://github.com/user-attachments/assets/1fdf9758-1472-4d19-9cfa-56fd25c15b6c) <br />
+
+  ![image](https://github.com/user-attachments/assets/19b6dad9-cb43-4b69-aa91-a73cc4ae2aa5) <br />
+
+  ![image](https://github.com/user-attachments/assets/c5b60a23-0fab-4479-b17a-3311bf86c511) <br />
+
+
 
 - Attach the storage
   ```
