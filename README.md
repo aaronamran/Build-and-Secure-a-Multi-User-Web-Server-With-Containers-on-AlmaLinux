@@ -543,14 +543,27 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   - SSH works with keys
     ![image](https://github.com/user-attachments/assets/af525eb8-f7eb-44aa-8b31-40b4fa67f38b) <br />
 
-  - Container starts via systemd
   - `/mnt/dev` auto-mounted
+    ```
+    mount | grep /mnt/dev
+    df -h | grep /mnt/dev
+    ```
     ![image](https://github.com/user-attachments/assets/1ed8c54e-bef9-4691-b720-7de01b2b0d83) <br />
 
   - Users and shared folders remain
-  - cron/at ran
+    ![image](https://github.com/user-attachments/assets/88186539-f5d4-43e0-9441-0fa591ce2029) <br />
+
+  - cron/at jobs ran (Both jobs were deleted earlier on)
   - Scripts work
+    ![image](https://github.com/user-attachments/assets/8c2e54b8-c981-4ef6-8a74-0c65bfe62d38) <br />
+
   - SELinux and firewall rules applied
+    ```
+    sestatus
+    getsebool httpd_can_network_connect
+    semanage port -l | grep 8081
+    sudo firewall-cmd --list-all
+    ```
     ![image](https://github.com/user-attachments/assets/dd93daac-d51c-4094-b001-e51dd57923b6)
 
 
