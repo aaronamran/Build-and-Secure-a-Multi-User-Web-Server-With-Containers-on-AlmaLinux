@@ -339,6 +339,7 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   sudo rm /etc/cron.hourly/testjob
   sudo rm /tmp/cron.log /tmp/atjob.log
   ```
+  ![image](https://github.com/user-attachments/assets/6015eca1-0308-436d-96cb-58d96ace6e26) <br />
 
 
 ## Logs, Performance and Journals
@@ -347,6 +348,12 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   journalctl -xe
   sudo dmesg
   ```
+  Log output of `journalctl -xe` command. `journalctl` is the tool to view logs collected by `systemd-journald`. `-x` adds extra explanation to log messages if available, while `-e` jumps to the end of the journal (the most recent logs). This command is used for diagnosing service failures, login issues, SELinux denials, troubleshooting after running `systemctl` commands and checking what happened when a cron job failed or a systemd service did not start <br />
+  ![image](https://github.com/user-attachments/assets/4004a308-2e99-4cb6-9371-2eea115e989c) <br />
+
+  Output of `sudo dmesg` command. `sudo dmesg` displays kernel ring buffer messages, which are logs directly from the Linux kernel, primarily hardware- and driver-related. `dmesg` which is short for 'display message' shows low-level system events <br />
+  ![image](https://github.com/user-attachments/assets/a94a9820-ec1b-482e-808c-c4d1fa09e8f2) <br />
+
 
 - Find and kill high CPU processes
   ```
