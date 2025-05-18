@@ -211,19 +211,19 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 - Mount at boot using UUID
   ```
-  sudo mkdir /mnt/dev
-  sudo blkid /dev/devvg/devlv  # Copy UUID
-  echo 'UUID=<UUID> /mnt/dev xfs defaults 0 0' | sudo tee -a /etc/fstab
+  sudo mkdir /mnt/dev  # creates a folder where the new volume will be mounted (like a virtual USB folder)
+  sudo blkid /dev/devvg/devlv  # copy the UUID
+  echo 'UUID=<UUID> /mnt/dev xfs defaults 0 0' | sudo tee -a /etc/fstab  # adds UUID entry so Linux mounts it automatically on every boot
   sudo mount -a
   ```
   ![image](https://github.com/user-attachments/assets/c1fef6d6-6763-4b8d-8599-b71de98280ba) <br />
 
 - Add a swap of 1GB
   ```
-  sudo lvcreate -L 1G -n swap devvg
-  sudo mkswap /dev/devvg/swap
-  echo '/dev/devvg/swap swap swap defaults 0 0' | sudo tee -a /etc/fstab
-  sudo swapon -a
+  sudo lvcreate -L 1G -n swap devvg  # creates another logical volume in the same VG, but it's for swap space (used like virtual RAM)
+  sudo mkswap /dev/devvg/swap  # formats it as a swap partition
+  echo '/dev/devvg/swap swap swap defaults 0 0' | sudo tee -a /etc/fstab  # Adds it to /etc/fstab so it's used after reboot
+  sudo swapon -a  # Activates all swap entries from /etc/fstab
   ```
   ![image](https://github.com/user-attachments/assets/e063c8a3-4ebb-4fc9-bfd9-85843f722a86) <br />
 
