@@ -74,7 +74,6 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ![image](https://github.com/user-attachments/assets/ae9ca394-6b3e-4a8a-8ea5-7ad93ba25c9d) <br />
   ![image](https://github.com/user-attachments/assets/8e68cb7b-1dad-4efc-a396-229c6894f450) <br />
 
-
 - Use the essential CLI tools
   ```
   touch testfile
@@ -82,38 +81,49 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   grep Hello testfile
   cat /etc/passwd | grep root
   ```
+  ![image](https://github.com/user-attachments/assets/34dc7df1-5312-462f-9dbf-177877328758) <br />
 
 - Use `man` to get a concise manual page for any command
   ```
   man tar
   ```
-  Press `/` then type a word to search. Press `q` to quit
+  ![image](https://github.com/user-attachments/assets/68c31298-5062-44a4-800b-e3b29d47b3a4) <br />
+
+  Press `/` then type a word to search. Press `q` to quit <br />
+  ![image](https://github.com/user-attachments/assets/4b395cd1-a5eb-4b59-b9ff-3d353fdf9d25) <br />
+  
 - `info` is often more detailed and structured than `man` and has navigation links
   ```
   info coreutils 'ls invocation'
   ```
+  ![image](https://github.com/user-attachments/assets/eaccd87d-1073-4a44-b065-4e32b2eb0dd4) <br />
+
 - Access the `/usr/share/doc` directory that contains package-specific documentations
   ```
   cd /usr/share/doc/tar
   ls
   ```
+  ![image](https://github.com/user-attachments/assets/cb608dc3-a8ba-4a88-b792-7141e92383f8) <br /> 
+
   Or search for installed docs
   ```
   ls /usr/share/doc | grep ssh
   ```
+  ![image](https://github.com/user-attachments/assets/9b2f9ad7-97ff-494a-a32d-9c37df332747) <br />
 
 - A good approach to understand a service (example: `firewalld` service) is to combine these commands to get concise help (`man`), in-depth guide (`info`) and upstream docs (`/usr/share/doc`)
   ```
   man firewalld
   info firewalld
   cd /usr/share/doc/firewalld
-  less README
+  less README.md
   ```
+  ![image](https://github.com/user-attachments/assets/f4217dc5-a29f-493d-ae21-a2af5bdaa5a3) <br />
+  ![image](https://github.com/user-attachments/assets/3bf60d81-c1ac-4e55-8c27-81a693e09fa5) <br />
+  ![image](https://github.com/user-attachments/assets/0efd8a37-487d-470d-8d62-8b89b46e1b60) <br />
+  ![image](https://github.com/user-attachments/assets/53bd0063-3533-4961-94d6-c42a370e6fa8) <br />
 
-  
 
-
-  
 
 ## Create and Use Users, Groups and Permissions
 
