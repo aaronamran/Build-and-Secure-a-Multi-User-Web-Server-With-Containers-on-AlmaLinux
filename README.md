@@ -198,16 +198,17 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   - Press `Enter` → Accept default last sector (uses entire disk)
   - Now the partition is created in memory
   - Type `w` → Write changes to disk and exit
+  <br />
   ![image](https://github.com/user-attachments/assets/16931239-88fe-4a3d-aa9b-17cca083af85) <br />
-
 
 - Create the LVM (Logical Volume Manager)
   ```
-  sudo pvcreate /dev/sdb1
-  sudo vgcreate devvg /dev/sdb1
-  sudo lvcreate -n devlv -L 2G devvg
-  sudo mkfs.xfs /dev/devvg/devlv
+  sudo pvcreate /dev/sdb1  # turns the partition into a physical volume (PV) - the base unit for LVM
+  sudo vgcreate devvg /dev/sdb1  # groups the physical volume into a volume group (VG) named devvg
+  sudo lvcreate -n devlv -L 2G devvg  # creates a logical volume (LV) named devlv of size 2GB
+  sudo mkfs.xfs /dev/devvg/devlv  # formats the logical volume with the XFS filesystem to be used like a regular drive
   ```
+  ![image](https://github.com/user-attachments/assets/d929a8ff-1ecb-4ece-845d-d6cb1d8a276c) <br /> 
 
 - Mount at boot using UUID
   ```
@@ -216,6 +217,7 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   echo 'UUID=<UUID> /mnt/dev xfs defaults 0 0' | sudo tee -a /etc/fstab
   sudo mount -a
   ```
+  ![image](https://github.com/user-attachments/assets/c1fef6d6-6763-4b8d-8599-b71de98280ba) <br />
 
 - Add a swap of 1GB
   ```
@@ -224,12 +226,7 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   echo '/dev/devvg/swap swap swap defaults 0 0' | sudo tee -a /etc/fstab
   sudo swapon -a
   ```
-
-  
-
-
-
-
+  ![image](https://github.com/user-attachments/assets/e063c8a3-4ebb-4fc9-bfd9-85843f722a86) <br />
 
 
 ## Network Configuration
