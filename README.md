@@ -360,21 +360,23 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   top
   kill -9 <PID>
   ```
+  ![image](https://github.com/user-attachments/assets/8fed7f33-2ce6-4209-acb1-d182678ea6f1) <br />
 
-- Set the tuning profile
+- Set the tuning profile using the `tuned` package which is a service that dynamically adjusts system settings based on selected profile
   ```
   sudo dnf install -y tuned
   sudo tuned-adm list
   sudo tuned-adm profile balanced
   ```
-
-
-
-
+  ![image](https://github.com/user-attachments/assets/8ba2b865-0710-4707-aaad-0efa0c8614ba) <br />
 
 
 ## Shell Scripting Practice
-- Create a sample script
+- Create a sample script using
+  ```
+  nano ~/service_control.sh
+  ```
+  Paste the following script
   ```
   #!/bin/bash
   if [ "$1" == "start" ]; then
@@ -385,8 +387,26 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
       echo "Usage: $0 start|stop"
   fi
   ```
+  ![image](https://github.com/user-attachments/assets/bdb9bb63-7409-4764-bb3f-f6a0bb15268e) <br />
 
-- Example of a loop script
+  Make the script executable using
+  ```
+  chmod +x ~/service_control.sh
+  ```
+
+  Test the script
+  ```
+  ~/service_control.sh start
+  ~/service_control.sh stop
+  ~/service_control.sh status
+  ```
+  ![image](https://github.com/user-attachments/assets/799f4b37-5aba-4c23-880f-f0fb53e54e94) <br />
+
+- Create another script using
+  ```
+  nano ~/check_users.sh
+  ```
+  Example of a loop script
   ```
   #!/bin/bash
   for user in dev1 dev2; do
@@ -394,10 +414,25 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
     ls /home/$user
   done
   ```
+  ![image](https://github.com/user-attachments/assets/51f012a5-3e5f-463a-995e-a1a59a6fc256) <br />
 
-
-
-
+  Make the script executable
+  ```
+  chmod +x ~/check_users.sh
+  ```
+  Run the script to test it
+  ```
+  ~/check_users.sh
+  ```
+  ![image](https://github.com/user-attachments/assets/fa7d9a9d-c952-470f-8dbf-381760530158) <br />
+  The screenshot shows that permission is required to check the files in the users personal directory. Note that no files are shown because the files are not created yet. Create the test files using
+  ```
+  sudo touch /home/dev1/file1.txt /home/dev2/file2.txt
+  sudo chown -R dev1:dev1 /home/dev1
+  sudo chown -R dev2:dev2 /home/dev2
+  ```
+  Then run and test the script again <br />
+  ![image](https://github.com/user-attachments/assets/8d6293f1-be87-4331-b873-b7985d55dbd5) <br />
 
 
 ## Containers with Podman
