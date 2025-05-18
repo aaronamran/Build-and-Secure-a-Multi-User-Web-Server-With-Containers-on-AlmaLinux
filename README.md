@@ -472,9 +472,9 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   sudo podman volume create --opt type=none --opt device=/webdata --opt o=bind webvolume
   podman run -d --name web2 -p 8081:80 -v webvolume:/usr/local/apache2/htdocs httpd
   ```
-    
+  ![image](https://github.com/user-attachments/assets/54f9b86b-0315-4cd9-a435-cbbe35c5a160) <br />
 
-
+  
 
 ## SELinux Practice and Testing with Reboot
 - List and fix the contexts
