@@ -540,7 +540,7 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   ![image](https://github.com/user-attachments/assets/42382bf4-9718-492a-bbaa-0e5290add24e) <br />
 
 - As an optional final validation, reboot the AlmaLinux VM and check the following:
-  - SSH works with keys
+  - SSH works with keys <br />
     ![image](https://github.com/user-attachments/assets/af525eb8-f7eb-44aa-8b31-40b4fa67f38b) <br />
 
   - `/mnt/dev` auto-mounted
