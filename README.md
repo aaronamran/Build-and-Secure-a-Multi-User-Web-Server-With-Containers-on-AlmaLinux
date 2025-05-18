@@ -83,7 +83,35 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
   cat /etc/passwd | grep root
   ```
 
-- Use man, info, /usr/share/doc, etc.
+- Use `man` to get a concise manual page for any command
+  ```
+  man tar
+  ```
+  Press `/` then type a word to search. Press `q` to quit
+- `info` is often more detailed and structured than `man` and has navigation links
+  ```
+  info coreutils 'ls invocation'
+  ```
+- Access the `/usr/share/doc` directory that contains package-specific documentations
+  ```
+  cd /usr/share/doc/tar
+  ls
+  ```
+  Or search for installed docs
+  ```
+  ls /usr/share/doc | grep ssh
+  ```
+
+- A good approach to understand a service (example: `firewalld` service) is to combine these commands to get concise help (`man`), in-depth guide (`info`) and upstream docs (`/usr/share/doc`)
+  ```
+  man firewalld
+  info firewalld
+  cd /usr/share/doc/firewalld
+  less README
+  ```
+
+  
+
 
   
 
