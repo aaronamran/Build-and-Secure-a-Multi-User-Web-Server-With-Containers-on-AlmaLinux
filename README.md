@@ -163,12 +163,43 @@ This practical project showcases a comprehensive RHCSA-level Linux system admini
 
 ## Local Storage and File System Management
 
-- Create a new disk in VM settings
+- Power off the AlmaLinux VM first to create a new disk in VM settings
+- Open VirtualBox Manager and navigate to the storage settings of AlmaLinux VM, find the add Hard Disk button under the existing Controller: SATA <br />
+  ![image](https://github.com/user-attachments/assets/e2321336-74be-43bc-baf9-96faa932792e) <br />
+- Create a new disk and choose VDI (VirtualBox Disk Image) as the disk file type <br />
+  ![image](https://github.com/user-attachments/assets/8d32b87f-be35-4450-aa53-286855ff9d82) <br />
+
+  A full size won't be pre-allocated for the disk <br />
+  ![image](https://github.com/user-attachments/assets/e52a3ef3-85a9-46b6-931d-3926d47e3127) <br />
+
+  5GB of storage size should suffice. FInish and save the settings <br />
+  ![image](https://github.com/user-attachments/assets/f4084b0d-6b32-4e1c-a107-246e7df80961) <br />
+  ![image](https://github.com/user-attachments/assets/426a2e60-5e1e-41bd-ae77-9f31ab7c813d) <br />
+
+- After powering on the AlmaLinux VM back, verify if the disk is detected
+  ```
+  lsblk
+  ```
+  ![image](https://github.com/user-attachments/assets/d2fd3a2c-67b8-4e58-a519-6633a06a8359) <br />
+  Notice that the newly added disk is named `sdb`
+  
 - Partition the disk
   ```
   sudo fdisk /dev/sdb
   ```
-  Create a primary partition and write
+  ![image](https://github.com/user-attachments/assets/4500d503-3b2a-40e0-a50a-e10e27d5fc91) <br />
+  Note that the output here is normal and is expected on a brand new unformatted disk. The statement "Device does not contain a recognized partition table." means that it is empty has no existing partition table (like MBR or GPT). "Created a new DOS disklabel with disk identifier 0x275348bb." means fdisk auto-created a new MBR (DOS) partition table which is what is needed for this project, unless if GPT is used for disks over 2TB or specific configurations
+
+- In the active `Command (m for help):` prompt, type the following in the correct order
+  - Type `n` → New partition
+  - Type `p` → Primary partition
+  - Press `Enter` → Accept default partition number 1
+  - Press `Enter` → Accept default first sector
+  - Press `Enter` → Accept default last sector (uses entire disk)
+  - Now the partition is created in memory
+  - Type `w` → Write changes to disk and exit
+  ![image](https://github.com/user-attachments/assets/16931239-88fe-4a3d-aa9b-17cca083af85) <br />
+
 
 - Create the LVM (Logical Volume Manager)
   ```
